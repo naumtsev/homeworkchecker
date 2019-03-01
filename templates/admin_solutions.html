@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  {% if sz == 0%}
+    <h1> <a style="margin:300px;" >Список решений учеников пуст </a></h1>
+
+      {% else %}
+<div>
+    <table border="1" width="100%" cellpadding="5" >
+
+
+      <th>ID</th>
+      <th>SENDER</th>
+      <th>TASK NAME</th>
+      <th>STATUS</th>
+      <th>SOLUTION</th>
+
+      {% for id, sender, task_name, status in solutions %}
+      <tr>
+          <th>{{id}}</th>
+          <th>{{sender}}</th>
+          <th>{{task_name}}</th>
+          {% if status == 'На проверке'%}
+          <th style="color:#DAA520">{{status}}</th>
+          {% endif %}
+            {% if status == 'Зачтено'%}
+          <th style="color:green">{{status}}</th>
+          {% endif %}
+            {% if status == 'Отклонено'%}
+          <th style="color:red">{{status}}</th>
+          {% endif %}
+          <th> <a href="/change_status/{{id}}">Посмотреть</a></th>
+    </tr>
+      {% endfor %}
+
+       </table>
+    </div>
+    {% endif%}
+{% endblock %}
