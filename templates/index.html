@@ -15,15 +15,18 @@
 
     {% for id, author, title, announcement in events%}
          <div style="align:center">
-             <a style="font-size:25px" > {{title}}  <a style="border: 1px solid black;padding-left:6px;padding-right:6px;color:black" href="/delete_announcement_{{id}}">  Удалить</a></a>
+             <a style="font-size:25px" > {{title}}
+
+
+                 {% if "username" in session and session["username"] in ADMINS%}
+                        <a style="border: 1px solid black;padding-left:6px;padding-right:6px;color:black" href="/delete_announcement_{{id}}">  Удалить</a></a>
+                {% endif %}
                 <br/>
             <a style="align:right;font-size:15px" >  Автор: {{author}}</a>
               <div style="border: 1px solid black;padding:5px;width:750px">
             {{announcement}}
               </div>
-            {% if "username" in session and session["username"] in ADMINS%}
 
-            {% endif %}
         </div>
         <br/>
     {% endfor %}
