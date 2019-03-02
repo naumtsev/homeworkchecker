@@ -9,7 +9,7 @@
             {{ form.task_name.label }}
             <br>
 
-                {{ form.task_name }} <br>
+                {{ form.task_name(size=62) }} <br>
 
             {% for error in form.task_name.errors %}
                 <div class="alert alert-danger" role="alert">
@@ -21,7 +21,7 @@
 
         <p>
             {{ form.code.label }}<br>
-            {{ form.code }}<br>
+        <pre>{{ form.code(cols="68", rows="25") }}</pre><br>
             {% for error in form.code.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}

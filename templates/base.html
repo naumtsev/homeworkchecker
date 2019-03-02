@@ -28,9 +28,23 @@
 
 
     <main role="main" class="container">
-        {% block content %}{% endblock %}
+        {% block content %}
+
+
+
+
+        {% endblock %}
     </main>
 
+    {% if code %}
+             <div style="margin-left:300px;border: 2px solid black;width:1200px;padding:3px">
+                 <h4>Название задачи: {{task_name}} </h4>
+            </div>
+            <br/>
+        <div style="margin-left:300px;border: 2px solid black;width:1200px;padding:20px">
+                <code> <pre >{{code}} </pre></code>
+            </div>
+    {% endif %}
 
   </body>
 </html>

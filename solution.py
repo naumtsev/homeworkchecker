@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import json
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, PasswordField, SelectField
+from wtforms.widgets import TextArea, TextInput
 from wtforms.validators import DataRequired, Email
 from flask_sqlalchemy import SQLAlchemy
 import random
@@ -20,8 +21,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Войти')
 
 class AddSolveForm(FlaskForm):
-    task_name = StringField('Название задачи:', validators=[DataRequired()])
-    code = TextAreaField('Код:', validators=[DataRequired()])
+    task_name = StringField('Название задачи:', validators=[DataRequired()], widget=TextInput())
+    code = TextAreaField('Код:', validators=[DataRequired()],widget=TextArea())
     submit = SubmitField('Отправить')
 
 class RegisterForm(FlaskForm):
@@ -71,18 +72,17 @@ class SolutionAttempt(db.Model):
 db.create_all()
 
 
-
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if 'username' not in session:
         return redirect('/login')
     return render_template('index.html', ADMINS=ADMINS, session=session)
 
+
 @app.route('/logout')
 def logout():
     session.pop('username',0)
     return redirect('/login')
-
 
 
 @app.route('/solutions')
@@ -102,6 +102,7 @@ def solutions():
         status = i.status
         arr.append((id, sender, task, status))
     return render_template('admin_solutions.html', session=session, ADMINS=ADMINS, solutions=arr, sz=len(arr))
+
 
 @app.route('/my_solutions', methods=['POST', 'GET'])
 def my_solutions():
@@ -147,8 +148,7 @@ def change_status(id):
         solve.status = form.select.data
         db.session.commit()
         return redirect('/solutions')
-    return render_template('change_status.html', form=form, code=solve.code, id=user.id, username=user.username, task=solve.task)
-
+    return render_template('change_status.html',session=session, ADMINS=ADMINS, form=form, code=solve.code, id=user.id, username=user.username, task=solve.task)
 
 
 @app.route('/code/<id>', methods=['POST', 'GET'])
@@ -159,9 +159,10 @@ def code_(id):
     solve = SolutionAttempt.query.filter_by(id=id).first()
     user = YandexLyceumStudent.query.filter_by(id=solve.student_id).first()
     if user.username == session['username'] or session['username'] in ADMINS:
-        return solve.code
+        return render_template('base.html', code = solve.code, ADMINS=ADMINS, session=session, task_name=solve.task)
     else:
         return redirect('/')
+
 
 @app.route('/send_solution', methods=['POST', 'GET'])
 def send_solution():
@@ -176,10 +177,11 @@ def send_solution():
                                     code = code,
                                     status = 'На проверке'
                                     )
-
+        print(code)
         user = YandexLyceumStudent.query.filter_by(username=session['username']).first()
         user.SolutionAttempts.append(solution)
         db.session.commit()
+        return redirect('/my_solutions')
     return render_template('add.html', ADMINS=ADMINS, session=session, form=form)
 
 
@@ -214,6 +216,7 @@ def register():
             return render_template('register.html', form=form, status=3)
 
     return render_template('register.html', form=form, session=session)
+
 
 
 if __name__ == '__main__':

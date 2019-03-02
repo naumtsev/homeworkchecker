@@ -7,25 +7,23 @@
 
         {{ form.hidden_tag() }}
         <div>
-            <h3>Название задачи: {{task}}</h3>
+            <h3><u>Название задачи:</u> {{task}}</h3>
             <h6>Отправитель: {{username}}</h6>
         </div>
 
         <br/>
-        <h4>Код посылки:</h4>
-            <div style="border: 2px solid black;">
-                {{code}}
+        <h4><u>Код посылки:</u></h4>
+            <div style="border: 2px solid black;padding:20px">
+                <code> <pre>{{code}} </pre></code>
             </div>
 
             <br/>
-            <h4> Поменять статус задачи на:</h4>
-            <p>
-                {{ form.select }}<br>
-                {% for error in form.select.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
-                    </div>
-                {% endfor %}
+            <p>  <h4> <u>Поменять статус задачи на:</u> <h5> </h5> </h4>   {{ form.select }}
+                    {% for error in form.select.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
             </p>
 
     <p>{{ form.submit() }}</p>
