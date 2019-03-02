@@ -13,8 +13,10 @@
 
           {% if "username" in session %}
 
+                        <a class="navbar-brand" href="/">Главная</a>
 
                         {% if session["username"] in ADMINS %}
+                             <a class="navbar-brand" href="/add_announcement">Добавить объявление</a>
                             <a class="navbar-brand" href="/solutions">Решения учеников</a>
                          {% else %}
                               <a class="navbar-brand" href="/send_solution">Отправить решение</a>
@@ -36,7 +38,7 @@
         {% endblock %}
     </main>
 
-    {% if code %}
+    {% if code and task_name %}
              <div style="margin-left:300px;border: 2px solid black;width:1200px;padding:3px">
                  <h4>Название задачи: {{task_name}} </h4>
             </div>

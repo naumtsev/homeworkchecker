@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h4>Добавить объявление</h4>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>     <h6> Заголовок:</h6>
+                {{ form.task_name(size=62) }} <br>
+
+            {% for error in form.task_name.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+        </p>
+
+         <h6> Текст:</h6>
+        <pre>{{ form.code(cols="68", rows="25") }}</pre>
+            {% for error in form.code.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+
+{% endblock %}

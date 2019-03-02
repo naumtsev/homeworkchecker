@@ -54,8 +54,8 @@ class YandexLyceumStudent(db.Model):
 
 class SolutionAttempt(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    task = db.Column(db.String(80), unique=False, nullable=False)
-    code = db.Column(db.String(1000), unique=False, nullable=False)
+    task = db.Column(db.String(120), unique=False, nullable=False)
+    code = db.Column(db.String(2000), unique=False, nullable=False)
     status = db.Column(db.String(50), unique=False, nullable=False)
     student_id = db.Column(db.Integer,
                            db.ForeignKey('yandex_lyceum_student.id'),
@@ -69,14 +69,69 @@ class SolutionAttempt(db.Model):
             self.id, self.task, self.status)
 
 
+
+class AnnouncementModel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(80), unique=False, nullable=False)
+    title = db.Column(db.String(200), unique=False, nullable=False)
+    announcement = db.Column(db.String(2000), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<AnnouncementModel {} {} {}>'.format(
+            self.id, self.author, self.title)
+
+
 db.create_all()
+
+
+
+
+@app.route('/delete_announcement_<id>', methods=['POST', 'GET'])
+def delete_announcement(id):
+    if 'username' not in session:
+        return redirect('/')
+
+    if session['username'] not in ADMINS:
+        return redirect('/')
+
+    me = AnnouncementModel.query.filter_by(id=id).first()
+    db.session.delete(me)
+    db.session.commit()
+    return redirect('/')
+
+
+@app.route('/add_announcement', methods=['POST', 'GET'])
+def ad_announcement():
+    if 'username' not in session:
+        return redirect('/')
+
+    if session['username'] not in ADMINS:
+        return redirect('/')
+
+    form = AddSolveForm()
+    if form.validate_on_submit():
+        code = form.code.data
+        task_name = form.task_name.data
+        event = AnnouncementModel(author=session["username"],
+                                     title=task_name,
+                                     announcement=code)
+        db.session.add(event)
+        db.session.commit()
+        return redirect('/')
+    return render_template("add_announcement.html", ADMINS=ADMINS, session=session, form=form)
+
+
 
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if 'username' not in session:
         return redirect('/login')
-    return render_template('index.html', ADMINS=ADMINS, session=session)
+    all = AnnouncementModel.query.all()
+    announcements = []
+    for i in all:
+        announcements.append((i.id, i.author, i.title, i.announcement))
+    return render_template('index.html', ADMINS=ADMINS, session=session, events=announcements, sz=len(announcements))
 
 
 @app.route('/logout')
