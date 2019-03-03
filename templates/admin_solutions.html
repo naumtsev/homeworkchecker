@@ -22,15 +22,17 @@
           <th>{{id}}</th>
           <th>{{sender}}</th>
           <th>{{task_name}}</th>
-          {% if status == 'На проверке'%}
-          <th style="color:#DAA520">{{status}}</th>
+
+            {% if status == 'На проверке'%}
+          <th> <a style="color:#DAA520">{{status}}</a></th>
           {% endif %}
             {% if status == 'Зачтено'%}
-          <th style="color:green">{{status}}</th>
+          <th > <a style="color:green">{{status}}</a></th>
           {% endif %}
             {% if status == 'Отклонено'%}
-          <th style="color:red">{{status}}</th>
+          <th> <a style="color:red">{{status}}</a>></th>
           {% endif %}
+
           <th> <a href="/change_status/{{id}}">Посмотреть</a></th>
           <th> <a href="/delete_solution/{{id}}">Удалить</a></th>
     </tr>
