@@ -13,6 +13,7 @@
       <th>TASK NAME</th>
       <th>CODE</th>
       <th>STATUS</th>
+         <th>DELETE</th>
 
       {% for id, task_name, status in solutions %}
       <tr>
@@ -28,7 +29,9 @@
             {% if status == 'Отклонено'%}
           <th style="color:red">{{status}}</th>
           {% endif %}
-    </tr>
+         <th> <a href="/delete_solution/{{id}}">Удалить</a></th>
+      </tr>
+
       {% endfor %}
 
        </table>

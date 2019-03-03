@@ -15,6 +15,7 @@
       <th>TASK NAME</th>
       <th>STATUS</th>
       <th>SOLUTION</th>
+        <th>DELETE</th>
 
       {% for id, sender, task_name, status in solutions %}
       <tr>
@@ -31,6 +32,7 @@
           <th style="color:red">{{status}}</th>
           {% endif %}
           <th> <a href="/change_status/{{id}}">Посмотреть</a></th>
+          <th> <a href="/delete_solution/{{id}}">Удалить</a></th>
     </tr>
       {% endfor %}
 

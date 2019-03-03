@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+
 from flask import Flask, render_template, request, redirect, session
 import json
 from flask_wtf import FlaskForm
@@ -82,6 +87,26 @@ class AnnouncementModel(db.Model):
 
 
 db.create_all()
+
+
+
+@app.route('/delete_solution/<id>', methods=['POST', 'GET'])
+def delete_solution(id):
+    if 'user' in session:
+        return redirect('/')
+
+    solution = SolutionAttempt.query.filter_by(id=id).first()
+    user = solution.student
+    if user.id == solution.student_id or session['username'] in ADMINS:
+        db.session.delete(solution)
+        db.session.commit()
+
+    if session['username'] in ADMINS:
+        return redirect('/solutions')
+    else:
+        return redirect('/my_solutions')
+
+
 
 
 
@@ -240,7 +265,6 @@ def send_solution():
     return render_template('add.html', ADMINS=ADMINS, session=session, form=form)
 
 
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if 'user' in session:
@@ -272,7 +296,7 @@ def register():
 
     return render_template('register.html', form=form, session=session)
 
-
-
-if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
+DEBUG = False
+if DEBUG:
+    if __name__ == '__main__':
+        app.run(port=8080, host='127.0.0.1')
