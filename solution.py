@@ -202,11 +202,14 @@ def login():
         user_name = form.user_name.data
         password = form.password.data
         user = YandexLyceumStudent.query.filter_by(username=user_name)
-        if (user and user.first().password == password):
-            user = user.first()
-            session['username'] = user.username
-            return redirect('/')
-        else:
+        try:
+            if(user.first().password == password):
+                    user = user.first()
+                    session['username'] = user.username
+                    return redirect('/')
+            else:
+                return render_template('login.html', form=form, session=session, status=3)
+        except Exception:
             return render_template('login.html', form=form, session=session, status=3)
     return render_template('login.html', form=form, session=session, status=1)
 
@@ -296,7 +299,7 @@ def register():
 
     return render_template('register.html', form=form, session=session)
 
-DEBUG = True
+DEBUG = False
 if DEBUG:
     if __name__ == '__main__':
         app.run(port=8080, host='127.0.0.1')

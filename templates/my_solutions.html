@@ -20,14 +20,14 @@
           <th>{{id}}</th>
           <th>{{task_name}}</th>
           <th> <a href="/code/{{id}}">url</a></th>
-          {% if status == 'На проверке'%}
+                 {% if status == 'На проверке'%}
           <th> <a style="color:#DAA520">{{status}}</a></th>
           {% endif %}
             {% if status == 'Зачтено'%}
           <th > <a style="color:green">{{status}}</a></th>
           {% endif %}
             {% if status == 'Отклонено'%}
-          <th> <a style="color:red">{{status}}</a>></th>
+          <th> <a style="color:red">{{status}}</a></th>
           {% endif %}
          <th> <a href="/delete_solution/{{id}}">Удалить</a></th>
       </tr>

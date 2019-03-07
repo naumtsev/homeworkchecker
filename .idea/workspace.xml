@@ -20,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/solution.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="429">
-              <caret line="298" column="12" lean-forward="false" selection-start-line="298" selection-start-column="12" selection-end-line="298" selection-end-column="12" />
+              <caret line="301" column="13" lean-forward="false" selection-start-line="301" selection-start-column="13" selection-end-line="301" selection-end-column="13" />
               <folding>
                 <element signature="e#45#113#0" expanded="true" />
               </folding>
@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/templates/change_status.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -53,8 +53,8 @@
       <file leaf-file-name="admin_solutions.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/admin_solutions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#h1#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
@@ -68,8 +68,8 @@
       <file leaf-file-name="my_solutions.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/my_solutions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="30" column="21" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="510">
+              <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#h1#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
@@ -173,8 +173,8 @@
         <option value="$PROJECT_DIR$/templates/change_status.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/my_solutions.html" />
         <option value="$PROJECT_DIR$/templates/admin_solutions.html" />
+        <option value="$PROJECT_DIR$/templates/my_solutions.html" />
         <option value="$PROJECT_DIR$/solution.py" />
       </list>
     </option>
@@ -404,7 +404,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/solution.py</url>
+          <line>198</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -619,7 +626,7 @@
     <entry file="file://$PROJECT_DIR$/templates/change_status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -628,8 +635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/my_solutions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="30" selection-end-column="21" />
+        <state relative-caret-position="510">
+          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#a#0;n#h1#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
@@ -641,8 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin_solutions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
           <folding>
             <element signature="n#style#0;n#a#0;n#h1#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
@@ -655,7 +662,7 @@
     <entry file="file://$PROJECT_DIR$/solution.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
-          <caret line="298" column="12" lean-forward="false" selection-start-line="298" selection-start-column="12" selection-end-line="298" selection-end-column="12" />
+          <caret line="301" column="13" lean-forward="false" selection-start-line="301" selection-start-column="13" selection-end-line="301" selection-end-column="13" />
           <folding>
             <element signature="e#45#113#0" expanded="true" />
           </folding>
