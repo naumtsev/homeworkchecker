@@ -306,7 +306,7 @@ def not_found_error(error):
 
 
 
-DEBUG = True
+DEBUG = False
 if DEBUG:
     if __name__ == '__main__':
         app.run(port=8080, host='127.0.0.1')
