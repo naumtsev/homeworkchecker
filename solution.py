@@ -299,7 +299,14 @@ def register():
 
     return render_template('register.html', form=form, session=session)
 
-DEBUG = False
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('error404.html'), 404
+
+
+
+DEBUG = True
 if DEBUG:
     if __name__ == '__main__':
         app.run(port=8080, host='127.0.0.1')
