@@ -6,10 +6,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>{{title}}</title>
 </head>
+
+<style>
+ body {
+    background-image: url(../static/fon.jpg);
+    background-color: #f8f9fa;
+   }
+ </style>
+
   <body>
     <header>
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Решение от Naumtsev</a>
+      <nav class="navbar navbar-light bg-light" style="border: 1px solid black;">
+        <a class="navbar-brand" href="/">Решение от Naumtsev</a>
 
           {% if "username" in session %}
 
@@ -30,6 +38,7 @@
 
 
     <main role="main" class="container">
+        <br/>
         {% block content %}
 
 
@@ -44,7 +53,7 @@
                  <h4>Название задачи: {{task_name}} </h4>
             </div>
             <br/>
-        <div style="margin-left:300px;border: 2px solid black;width:1200px;padding:20px">
+        <div style="margin-left:300px;border: 2px solid black;width:1200px;padding:20px;">
                 <code> <pre >{{code}} </pre></code>
             </div>
     {% endif %}

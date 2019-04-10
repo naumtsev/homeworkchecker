@@ -7,7 +7,7 @@
     {% if not sz %}
      <center><a style="font-size:40px">Cписок объявлений пуст</a> </center>
     {% else %}
-           <center><a style="font-size:40px">Доска объявлений</a></center>
+          <a style="font-size:40px">Доска объявлений</a>
             <br/>
     {% endif %}
 
@@ -17,13 +17,12 @@
          <div style="align:center">
              <a style="font-size:25px" > {{title}}
 
-
                  {% if "username" in session and session["username"] in ADMINS%}
-                        <a style="border: 1px solid black;padding-left:6px;padding-right:6px;color:black" href="/delete_announcement_{{id}}">  Удалить</a></a>
+                        <a style="border: 1px solid black;padding-left:6px;padding-right:6px;color:black;" href="/delete_announcement_{{id}}">  Удалить</a></a>
                 {% endif %}
                 <br/>
             <a style="align:right;font-size:15px" >  Автор: {{author}}</a>
-              <div style="border: 1px solid black;padding:5px;width:750px">
+              <div style="border: 1px solid black;padding:5px;width:750px;background-color: #f8f9fa;">
             {{announcement}}
               </div>
 
